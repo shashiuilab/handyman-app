@@ -1,26 +1,280 @@
-@import "tailwindcss";
+/* Comment out Tailwind layers for now */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* PrimeReact core and themes */
+@import 'primereact/resources/primereact.min.css';
+@import 'primereact/resources/themes/lara-dark-indigo/theme.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/700.css';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-primary: #46A397;
+    --color-background: #252929;
+    --color-link: #27666E;
+    --color-text: #ffffff;
+    --color-surface: #2d2f31;
+    --color-border: #3a3a3a;
+    --color-cardbg: #27666E;
+    --color-cardbtn: #f3b02a;
+    --color-orange: #F17E62;
+    --font-family: 'Poppins', sans-serif;
   }
-}
+  
+  /* Base layout */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  
+  /* Headings and accent text */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Links */
+  a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  
+  /* Buttons */
+  .p-button {
+    background: var(--color-primary);
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  .p-button:hover {
+    background: #3c8b83;
+  }
+  .p-button:focus {
+    box-shadow: 0 0 0 2px rgba(70, 163, 151, 0.4);
+  }
+  
+  /* Input Fields */
+  .p-inputtext, .p-dropdown, .p-multiselect {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+  .p-inputtext:focus, .p-dropdown:focus, .p-multiselect:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+  
+  /* Cards & Panels */
+  .p-card {
+    background: var(--color-surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    border: 1px solid var(--color-border);
+  }
+  
+  /* Avatars, Badges, Radios, Checkboxes all inherit theme */
+  .p-avatar, .p-badge {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+  }
+  .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+  }
+  
+  /* Layout helpers */
+  .surface-section {
+    background: var(--color-background);
+  }
+  .surface-card {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+  }
+  
+  /* PrimeFlex overrides (optional enhancements) */
+  .text-primary {
+    color: var(--color-primary) !important;
+  }
+  .bg-primary {
+    background-color: var(--color-primary) !important;
+  }
+  /* .surface-card {
+    background-color: var(--color-link) !important;
+  } */
+  .surface-card .p-card-content button {
+    background-color: var(--color-cardbtn) !important;
+    color: var(--color-background) !important;
+  }
+  .yellow-accent {
+    color: var( --color-cardbtn)
+  }
+  .orange-accent {
+    color: var(--color-orange);
+  }
+  .banner-bg {
+    background-color: var(--color-cardbg);
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  .handyman-card {
+    max-width: 700px;
+    margin: 2rem auto;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    font-family: var(--font-family);
+    padding: 2rem;
+  }
+  
+  .tag-step {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+  }
+  
+  .step-title {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  
+  .submit-btn {
+    background-color: var(--color-cardbtn) !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+    border: none !important;
+  }
+  
+  .p-divider {
+    border-color: var(--color-border) !important;
+  }
+
+  .p-inputswitch.p-highlight .p-inputswitch-slider,
+  .p-checkbox .p-checkbox-box
+   {
+    background-color: #27666E;
+    font-size: 16px;
+  }
+
+  .p-checkbox .p-checkbox-box .p-checkbox-icon {
+    color: white;
+  }
+
+  .handyman-dashboard-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    font-family: var(--font-family);
+    color: var(--color-text);
+  }
+  
+  .dashboard-title {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--color-text);
+  }
+  
+  .no-jobs-text {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-top: 1rem;
+  }
+  
+  .job-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    color: var(--color-text);
+  }
+  
+  .job-description {
+    color: var(--color-text);
+    opacity: 0.9;
+  }
+  
+  .job-image {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .dashboard-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    font-family: var(--font-family);
+    color: var(--color-text);
+  }
+  
+  .dashboard-title {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--color-text);
+  }
+  
+  .job-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    color: var(--color-text);
+  }
+  
+  .job-image {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+  }
+  
+  .handyman-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+  }
+  
+  .status-text {
+    color: var(--color-primary);
+  }
+  
+/* Ripple effect (already enabled in PrimeReact) */
+
