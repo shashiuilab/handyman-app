@@ -48,11 +48,13 @@ export const authOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // Always redirect to /dashboard after login
-      return baseUrl + "/setup-role";
-  
-      // Optional: dynamic redirect if url is set
-      // return url.startsWith(baseUrl) ? url : baseUrl + "/dashboard";
-    },
+      // If a user is logging in via /signin page, send them to /setup-role or dashboard
+      if (url.includes("/api/auth/signin")) {
+        return baseUrl + "/setup-role"; // after login
+      }
+      
+      // For other URLs, allow normal navigation
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    }    
   },
 };
